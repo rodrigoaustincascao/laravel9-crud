@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Listagem de Usuários')
+@section('title', "Comentários do Usuários {$user->name}")
 
 @section('content')
 <h1>
-    Listagem de Usuários
+    Comentários do Usuários {{$user->name}}
     <a href="{{route('users.create')}}">+</a>
 </h1>
 
@@ -13,14 +13,13 @@
     <button>Pesquisar</button>
 </form>
 <ul>
-    @foreach($users as $user)
+    @foreach($comments as $comment)
         <li>
             {{$user->name}} 
             -
             {{$user->email}}
             <a href="{{route('users.show', $user->id)}}"> | Detalhes</a>
             <a href="{{route('users.edit', $user->id)}}"> | Editar</a>
-            <a href="{{route('comments.index', $user->id)}}"> | Comentários</a>
         </li>
     @endforeach
 </ul>
